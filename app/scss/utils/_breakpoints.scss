@@ -1,20 +1,24 @@
+@use '_functions' as f;
 // mobile 700px and less (medium)
 // tablets 900px and less (large)
 // small screens 1440px and less
 // large screens  1440px and larger
 
 // min-width
+// 700px, 900px, 1440px
 $breakpoints-up: (
-    // 1em is calculated relative to parent element
+    // 1em  is calculated relative to parent element
     // it is based off browser base font size
     // 1em = 16px
     // 16px is the default font size in browser
     // 700px /16 px = 43.75em
     // em is best for media queries
-    // rem is best for fonts ect.
-    'medium': 43.75em,
-    'large': 56.25em,
-    'xlarge': 90em
+    // rem is best for fonts ect. and is calculated on the base size of the font set in the browser.
+    // therefore 1rem = 16px if fontsize in browser settings is set to 16px
+    // NB. em based on parent element, rem based on base font size in browser settings
+    'medium': f.em(700),
+    'large': f.em(900),
+    'xlarge': f.em(1440)
 );
 
 // max-width
@@ -24,9 +28,9 @@ $breakpoints-up: (
 //
 // remember that 1em = 16px
 $breakpoints-down: (
-    'small': 43.7485em,
-    'medium': 56.24875em,
-    'large': 89.99875em,
+    'small': f.em(699.98),
+    'medium': f.em(899.98),
+    'large': f.em(1439.98),
 );
 
 @mixin breakpoint-up($size) {

@@ -20,7 +20,8 @@ h1 {
     // min font-size will be 28px then with 2vw added on
     // while max font-size will be
     // clamp(min-value, preferred-value, max-value)
-    font-size: clamp(28px, 16px + 2vw, 40px);
+    //
+    font-size: clamp(u.rem(28), u.rem(16) + 2vw, u.rem(40));
 
     // *** old way of changing font size using breakpoints
     // font-size: 28px;
@@ -34,8 +35,13 @@ h1 {
     // }
 }
 
+h2 {
+    font-size: clamp(u.rem(22), u.rem(14) + 1.5vw, u.rem(36));
+}
+
 p {
     margin-top: 0;
+    font-size: u.rem(16);
 }
 
 a,
