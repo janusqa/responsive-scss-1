@@ -1,9 +1,37 @@
+@use '../utils' as u;
+
 h1,
 h2,
 h3 {
     font-weight: 700;
     line-height: 1.1;
     margin-top: 0;
+}
+
+h1 {
+    // *** new way of changing font size when screen size changes
+    // we use vw (viewport width)
+    // 1 vw = 1% of devices viewport
+    // eg. on screen of 375px 1vw = 3.75px
+    // so if we want fontsie of 28px on 375px size sreen
+    // 28px = 28/375 = 0.0747 = 7.47%
+    //
+    // we use clamp to put some constraints on the font-size
+    // min font-size will be 28px then with 2vw added on
+    // while max font-size will be
+    // clamp(min-value, preferred-value, max-value)
+    font-size: clamp(28px, 16px + 2vw, 40px);
+
+    // *** old way of changing font size using breakpoints
+    // font-size: 28px;
+
+    // @include u.breakpoint-up(medium) {
+    //     font-size: 36px;
+    // }
+
+    // @include u.breakpoint-up(large) {
+    //     font-size: 42px;
+    // }
 }
 
 p {
