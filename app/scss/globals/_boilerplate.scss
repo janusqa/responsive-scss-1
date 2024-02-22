@@ -1,0 +1,26 @@
+@use '../utils' as u;
+
+html {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /* css or scss variables can be used but css variables are preferred */
+    font-family: u.$font; /* using scss variables */
+    background-color: var(--background-color); /* using css variables */
+    color: var(--text-color);
+}

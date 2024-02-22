@@ -1,0 +1,44 @@
+@use '../utils' as u;
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 40px;
+    // max-width: 1000px;
+    width: min(100% - 40px, 1000px);
+    margin-inline: auto;
+
+    // min-width means for specifed width and larger
+    // max-width means for specified width and smaller
+    //
+    // use "@include" to load mix-in breakpoing from utils folder
+    //
+    // remember to "@use" the utils folder to makes its contents
+    // avaliable for use
+    @include u.breakpoint-up(large) {
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    &__main,
+    &__sidebar {
+        padding: 40px;
+    }
+
+    &__main {
+        background-color: hsl(240, 99%, 33%);
+    }
+
+    &__sidebar {
+        background-color: hsl(300, 100%, 30%);
+
+        // for screens less than large center
+        // text in the aside.
+        // this is an example of a rule we want to only apply on mobile
+        // hence we use max-width to target less than
+        @include u.breakpoint-down(medium) {
+            text-align: center;
+        }
+    }
+}

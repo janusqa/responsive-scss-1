@@ -1,0 +1,42 @@
+// mobile 700px and less (medium)
+// tablets 900px and less (large)
+// small screens 1440px and less
+// large screens  1440px and larger
+
+// min-width
+$breakpoints-up: (
+    // 1em is calculated relative to parent element
+    // it is based off browser base font size
+    // 1em = 16px
+    // 16px is the default font size in browser
+    // 700px /16 px = 43.75em
+    // em is best for media queries
+    // rem is best for fonts ect.
+    'medium': 43.75em,
+    'large': 56.25em,
+    'xlarge': 90em
+);
+
+// max-width
+// 699.98px, 899.98.px, 1439.98px
+// we use 0.02 pixels less to avoid overlap with
+// breakpoints-up
+//
+// remember that 1em = 16px
+$breakpoints-down: (
+    'small': 43.7485em,
+    'medium': 56.24875em,
+    'large': 89.99875em,
+);
+
+@mixin breakpoint-up($size) {
+    @media (min-width: map-get($breakpoints-up, $size)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-down($size) {
+    @media (max-width: map-get($breakpoints-down, $size)) {
+        @content;
+    }
+}

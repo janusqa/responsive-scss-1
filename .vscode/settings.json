@@ -1,0 +1,18 @@
+{
+    "terminal.integrated.fontFamily": "'JetBrains Mono'",
+    "terminal.integrated.gpuAcceleration": "off",
+
+    //SASS/SCSS
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "compressed",
+            "extensionName": ".css",
+            "savePath": "/dist",
+            "savePathReplacementPairs": null
+        }
+    ],
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    }
+}
