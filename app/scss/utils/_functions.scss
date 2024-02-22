@@ -1,21 +1,29 @@
 @use 'sass:math' as m; // built-in module
 
-@function rem($pixel) {
+@function rem($pixel, $base-font: 16) {
     // throw error if parameter was provided with a unit
     // we are only expecting a number not a number with a unit
     @if (m.is-unitless($pixel)) {
         // divide $pixel by 16 to return rem
-        @return (m.div($pixel, 16) + rem);
+        @return (m.div($pixel, $base-font) + rem);
     } @else {
         @error 'rem(): Expected a number, but got a number with units';
     }
 }
 
-@function em($pixel) {
+@function em($pixel, $base-font: 16) {
     @if (m.is-unitless($pixel)) {
         // divide $pixel by 16 to return em
-        @return (m.div($pixel, 16) + em);
+        @return (m.div($pixel, $base-font) + em);
     } @else {
         @error 'em(): Expected a number, but got a number with units';
+    }
+}
+
+@function vw($pixel, $base-width: 1920) {
+    @if (m.is-unitless($pixel)) {
+        @return ((($value / $base-width) * 100) + vw);
+    } @else {
+        @error 'vw(): Expected a number, but got a number with units';
     }
 }

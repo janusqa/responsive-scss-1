@@ -1,5 +1,13 @@
 @use '../utils' as u;
 
+// this is a placeholder. It will not generate any css unless
+// we reference it somewhere else. To use it, do the same
+// as if you were extending modifier with the styles of an element
+// like we did below with the widget. That is we use "@extend" keyword
+%widget {
+    padding: u.rem(16);
+}
+
 .grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -31,8 +39,6 @@
     }
 
     &__sidebar {
-        background-color: hsl(300, 100%, 30%);
-
         // for screens less than large center
         // text in the aside.
         // this is an example of a rule we want to only apply on mobile
@@ -40,5 +46,9 @@
         @include u.breakpoint-down(medium) {
             text-align: center;
         }
+    }
+
+    &__widget {
+        padding: u.rem(16);
     }
 }
